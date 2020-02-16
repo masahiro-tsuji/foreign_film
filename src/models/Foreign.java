@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "getAllForeigns",query = "SELECT m FROM Foreign AS m ORDER BY m.id DESC")
+        @NamedQuery(name = "getAllForeigns", query = "SELECT m FROM Foreign AS m ORDER BY m.id DESC")
 })
 @Table(name = "foreigns")
 public class Foreign {
@@ -23,17 +23,17 @@ public class Foreign {
     @Column(name = "title", length = 225, nullable = false)
     private String title;
 
-    @Column(name = "content", length = 225, nullable = false)
-    private String content;
+    @Column(name = "contents", length = 225, nullable = false)
+    private String contents;
 
-    @Column(name = "str", length = 225, nullable = false)
-    private String str;
-
-    @Column(name = "lat", length = 225, nullable = false)
+    @Column(name = "lat", nullable = false)
     private double lat;
 
-    @Column(name = "lng", length = 225, nullable = false)
+    @Column(name = "lng", nullable = false)
     private double lng;
+
+    @Column(name = "location", length = 225, nullable = false)
+    private String location;
 
     public Integer getId() {
         return id;
@@ -52,19 +52,11 @@ public class Foreign {
     }
 
     public String getContent() {
-        return content;
+        return contents;
     }
 
-    public String getStr() {
-        return str;
-    }
-
-    public void setStr(String str) {
-        this.str = str;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setContent(String contents) {
+        this.contents = contents;
     }
 
     public double getLat() {
@@ -81,6 +73,14 @@ public class Foreign {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
 }

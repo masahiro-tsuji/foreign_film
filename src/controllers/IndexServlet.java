@@ -35,11 +35,10 @@ public class IndexServlet extends HttpServlet {
             throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        List<Foreign> foreigns = em.createNamedQuery("getAllForeigns", Foreign.class).getResultList();
-
+        List<Foreign> foreigns = em.createNamedQuery("getAllForeigns", Foreign.class)
+                                   .getResultList();
         response.getWriter().append(Integer.valueOf(foreigns.size()).toString());
 
-       em.close();
+        em.close();
     }
-
 }

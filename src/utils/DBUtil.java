@@ -5,18 +5,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DBUtil {
-private static final String PERSISTENCE_UNIT_NAME = "foreign_film";
-private static EntityManagerFactory emf;
+    private static final String PERSISTENCE_UNIT_NAME = "foreign_film";
+    private static EntityManagerFactory emf;
 
-public static EntityManager createEntityManager(){
-    return _getEntityManagerFactory().createEntityManager();
-}
-
-private static EntityManagerFactory _getEntityManagerFactory(){
-    if(emf == null){
-        emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+    public static EntityManager createEntityManager() {
+        return _getEntityManagerFactory().createEntityManager();
     }
 
-    return emf;
-}
+    private static EntityManagerFactory _getEntityManagerFactory() {
+        if (emf == null) {
+            emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        }
+
+        return emf;
+    }
 }
