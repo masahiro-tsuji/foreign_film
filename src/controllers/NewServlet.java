@@ -2,7 +2,7 @@ package controllers;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Foreign;
-import utils.DBUtil;
 
 /**
  * Servlet implementation class NewServlet
@@ -32,36 +31,15 @@ public class NewServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EntityManager em = DBUtil.createEntityManager();
-        em.getTransaction().begin();
+       //CSRF対策
+        request.setAttribute("_token", request.getSession().getId());
 
-        //Foreignのインスタンス生成
-        Foreign f = new Foreign();
+        //おまじないとしてのインスタンス生成
+        request.setAttribute("foreign", new Foreign());
 
-        // fの各プロパティにデータを代入
-        String title = "SUPERNATURAL";
-        f.setTitle(title);
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/foreigns/new.jsp");
+        rd.forward(request, response);
 
-        String contents = "兄弟が悪魔退治をしていく物語";
-        f.setContents(contents);
-
-        double lat = 49.20678;
-        f.setLat(lat);
-
-        double lng = -122.91092;
-        f.setLng(lng);
-
-        String location = "カナダ・バンクーバー";
-        f.setLocation(location);
-
-        //データベースに保存
-        em.persist(f);
-        em.getTransaction().commit();
-
-        //自動採番されたIDの値を表示
-        response.getWriter().append(Integer.valueOf(f.getId()).toString());
-
-        em.close();
     }
 
 }
