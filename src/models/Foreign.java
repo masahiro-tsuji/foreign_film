@@ -5,13 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "getAllForeigns", query = "SELECT m FROM Foreign AS m ORDER BY m.id DESC")
+    @NamedQuery(
+            name = "getAllForeign",
+            query = "SELECT f FROM Foreign AS f ORDER BY f.id DESC"
+            )
 })
 @Table(name = "foreigns")
 public class Foreign {
@@ -23,14 +27,15 @@ public class Foreign {
     @Column(name = "title", length = 225, nullable = false)
     private String title;
 
-    @Column(name = "contents", length = 225, nullable = false)
+    @Lob
+    @Column(name = "contents", nullable = false)
     private String contents;
 
     @Column(name = "lat", nullable = false)
-    private double lat;
+    private double lat;//緯度
 
     @Column(name = "lng", nullable = false)
-    private double lng;
+    private double lng;//経度
 
     @Column(name = "location", length = 225, nullable = false)
     private String location;
@@ -51,11 +56,11 @@ public class Foreign {
         this.title = title;
     }
 
-    public String getContent() {
+    public String getContents() {
         return contents;
     }
 
-    public void setContent(String contents) {
+    public void setContents(String contents) {
         this.contents = contents;
     }
 
