@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({
     @NamedQuery(
-            name = "getAllForeign",
+            name = "getAllForeigns",
             query = "SELECT f FROM Foreign AS f ORDER BY f.id DESC"
             )
 })

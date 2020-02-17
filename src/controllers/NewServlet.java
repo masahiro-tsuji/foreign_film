@@ -51,7 +51,7 @@ public class NewServlet extends HttpServlet {
         double lng = -122.91092;
         f.setLng(lng);
 
-        String location = "カナダ　ニューウエストミンター";
+        String location = "カナダ・バンクーバー";
         f.setLocation(location);
 
         //データベースに保存

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,12 @@ public class IndexServlet extends HttpServlet {
 
         List<Foreign> foreigns = em.createNamedQuery("getAllForeigns", Foreign.class)
                                    .getResultList();
-        response.getWriter().append(Integer.valueOf(foreigns.size()).toString());
+
+        request.setAttribute("foreigns", foreigns);
+
+
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/foreigns/index.jsp");
+        rd.forward(request, response);
 
         em.close();
     }
