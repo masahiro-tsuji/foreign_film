@@ -68,16 +68,16 @@ public class Foreign {
         return lat;
     }
 
-    public void setLat(double d) {
-        this.lat = d;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
     public double getLng() {
         return lng;
     }
 
-    public void setLng(double d) {
-        this.lng = d;
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
     public String getLocation() {
