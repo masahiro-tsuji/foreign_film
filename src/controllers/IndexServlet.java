@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -38,6 +40,9 @@ public class IndexServlet extends HttpServlet {
 
         List<Foreign> foreigns = em.createNamedQuery("getAllForeigns", Foreign.class)
                                    .getResultList();
+
+        ArrayList<String> title = new ArrayList<>();
+        Collections.sort(title);
 
         request.setAttribute("foreigns", foreigns);
 

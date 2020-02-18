@@ -31,10 +31,10 @@ public class Foreign {
     @Column(name = "contents", nullable = false)
     private String contents;
 
-    @Column(name = "lat", nullable = false)
+    @Column(name = "lat",length = 15 ,nullable = false)
     private double lat;//緯度
 
-    @Column(name = "lng", nullable = false)
+    @Column(name = "lng",length = 15 , nullable = false)
     private double lng;//経度
 
     @Column(name = "location", length = 225, nullable = false)
@@ -68,16 +68,16 @@ public class Foreign {
         return lat;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setLat(double d) {
+        this.lat = d;
     }
 
     public double getLng() {
         return lng;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setLng(double d) {
+        this.lng = d;
     }
 
     public String getLocation() {
