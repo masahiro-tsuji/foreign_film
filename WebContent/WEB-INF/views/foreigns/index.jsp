@@ -7,7 +7,7 @@
         <ul>
             <c:forEach var="foreign" items="${foreigns}">
                 <li><a
-                    href="${pageContext.request.contextPath}/show?id=${foreign.title}">
+                    href="${pageContext.request.contextPath}/show?id=${foreign.id}">
                         <c:out value="${foreign.title}" />
                 </a>>><c:out value="${foreign.location}"></c:out></li>
             </c:forEach>

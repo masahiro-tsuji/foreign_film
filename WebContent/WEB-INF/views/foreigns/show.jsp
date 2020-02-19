@@ -18,12 +18,12 @@
             <c:out value="${foreign.lng}" />
         </p>
         <p>
-            あらすじ
+            あらすじ<br/>
             <c:out value="${foreign.contents}" />
         </p>
 
         <p><a href="${pageContext.request.contextPath}/index">一覧に戻る</a></p>
-
+        <p><a href="${pageContext.request.contextPath}/edit?id=${foreign.id}">削除</a></p>
 
     </c:param>
 </c:import>

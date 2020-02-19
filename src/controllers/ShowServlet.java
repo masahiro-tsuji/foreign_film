@@ -35,7 +35,7 @@ public class ShowServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
      // 該当のタイトル1件のみをデータベースから取得
-        Foreign f = em.find(Foreign.class, request.getParameter("title"));
+        Foreign f = em.find(Foreign.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 
