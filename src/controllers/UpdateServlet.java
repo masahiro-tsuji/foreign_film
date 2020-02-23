@@ -13,16 +13,16 @@ import models.Foreign;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class CreateServlet
+ * Servlet implementation class UpdateServlet
  */
-@WebServlet("/create")
-public class CreateServlet extends HttpServlet {
+@WebServlet("/update")
+public class UpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateServlet() {
+    public UpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,8 +36,11 @@ public class CreateServlet extends HttpServlet {
         if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Foreign f = new Foreign();
+            // セッションスコープから洋画データを取得して
+            // 該当のIDの洋画1件のみをデータベースから取得
+            Foreign f = em.find(Foreign.class, (Integer) (request.getSession().getAttribute("foreign_id")));
 
+            // フォームの内容を各プロパティに上書き
             f.setTitle(request.getParameter("title"));
             //f.setImg(request.getParameter("img"));
             f.setContents(request.getParameter("contents"));
@@ -45,13 +48,16 @@ public class CreateServlet extends HttpServlet {
             f.setLat(Double.parseDouble(request.getParameter("lat")));
             f.setLng(Double.parseDouble(request.getParameter("lng")));
 
+            // データベースを更新
             em.getTransaction().begin();
-            em.persist(f);
             em.getTransaction().commit();
             em.close();
 
-            response.sendRedirect(request.getContextPath() + "/index");
+            // セッションスコープ上の不要になったデータを削除
+            request.getSession().removeAttribute("foreign_id");
 
+            // indexページへリダイレクト
+            response.sendRedirect(request.getContextPath() + "/index");
         }
 
     }

@@ -3,6 +3,10 @@
 <input type="text" name="title" value="${foreign.title}"/>
 <br/><br/>
 
+<%--<label for="img">参考画像</label><br/>
+<input type="file" name="img" value="${foreign.img}">
+<br/><br/>
+--%>
 <label for="contents">内容</label><br/>
 <textarea name="contents" rows="10" cols="50">${foreign.contents}</textarea>
 <br/><br/>

@@ -27,12 +27,16 @@ public class Foreign {
     @Column(name = "title", length = 225, nullable = false)
     private String title;
 
+//    @Column(name = "img")
+//    private Img img;
+
     @Lob
     @Column(name = "contents", nullable = false)
     private String contents;
 
-    @Column(name = "lat",length = 15 ,nullable = false)
+    @Column(name = "lat",length = 25 ,nullable = false)
     private double lat;//緯度
+
 
     @Column(name = "lng",length = 15 , nullable = false)
     private double lng;//経度
@@ -51,6 +55,14 @@ public class Foreign {
     public String getTitle() {
         return title;
     }
+
+//    public Img getImg() {
+//        return img;
+//    }
+
+//    public void setImg(Img img) {
+//        this.img = img;
+//    }
 
     public void setTitle(String title) {
         this.title = title;
