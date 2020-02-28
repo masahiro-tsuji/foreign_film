@@ -12,7 +12,7 @@
             <c:out value="${foreign.location}" />
         </p>
 
-        <body>
+
             <div id="map"></div>
             <!-- 地図を表示する div 要素（id="map"）-->
             <script>
@@ -30,7 +30,6 @@
             <script
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPiYYC9GRrpemqgmat65d5RXu_V3ZcQDc&callback=initMap"
                 async defer></script>
-        </body>
 
 
         <p>
