@@ -12,9 +12,6 @@
             <c:out value="${foreign.location}" />
         </p>
 
-
-        </head>
-
         <body>
             <div id="map"></div>
             <!-- 地図を表示する div 要素（id="map"）-->
