@@ -27,7 +27,7 @@ public class Foreign {
     @Column(name = "title", length = 225, nullable = false)
     private String title;
 
-//    @Column(name = "img")
+//    @Column(name = "img",nullable = false)
 //    private Img img;
 
     @Lob

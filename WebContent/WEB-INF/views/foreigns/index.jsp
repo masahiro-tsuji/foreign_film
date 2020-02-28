@@ -9,7 +9,7 @@
                 <li><a
                     href="${pageContext.request.contextPath}/show?id=${foreign.id}">
                         <c:out value="${foreign.title}" />
-                </a>>><c:out value="${foreign.location}"></c:out></li>
+                </a></li>
             </c:forEach>
         </ul>
 

@@ -11,19 +11,42 @@
             撮影場所：
             <c:out value="${foreign.location}" />
         </p>
+
+
+        </head>
+
+        <body>
+            <div id="map"></div>
+            <!-- 地図を表示する div 要素（id="map"）-->
+            <script>
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center : {
+                            lat : <c:out value="${foreign.lat}" />,
+                            lng : <c:out value="${foreign.lng}" />
+                        },
+                        zoom : 8
+                    });
+                }
+            </script>
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPiYYC9GRrpemqgmat65d5RXu_V3ZcQDc&callback=initMap"
+                async defer></script>
+        </body>
+
+
         <p>
-            <c:out value="${foreign.lat}" />
-        </p>
-        <p>
-            <c:out value="${foreign.lng}" />
-        </p>
-        <p>
-            あらすじ<br/>
+            あらすじ<br />
             <c:out value="${foreign.contents}" />
         </p>
 
-        <p><a href="${pageContext.request.contextPath}/index">一覧に戻る</a></p>
-        <p><a href="${pageContext.request.contextPath}/edit?id=${foreign.id}">編集</a></p>
+        <p>
+            <a href="${pageContext.request.contextPath}/index">一覧に戻る</a>
+        </p>
+        <p>
+            <a href="${pageContext.request.contextPath}/edit?id=${foreign.id}">編集</a>
+        </p>
 
     </c:param>
 </c:import>
