@@ -31,7 +31,8 @@ public class EditServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
         //該当のIDの洋画１件をデータベースから取得
@@ -39,15 +40,21 @@ public class EditServlet extends HttpServlet {
 
         em.close();
 
-     // 洋画情報とセッションIDをリクエストスコープに登録
+        // 洋画情報とセッションIDをリクエストスコープに登録
         request.setAttribute("foreign", f);
         request.setAttribute("_token", request.getSession().getId());
 
-     //洋画のIDをセッションスコープに登録
-    request.getSession().setAttribute("foreign_id", f.getId());
+        // 洋画データが存在しているときのみ
+        // 洋画のIDをセッションスコープに登録
+        if (f != null) {
+            request.getSession().setAttribute("foreign_id", f.getId());
+        }
 
-    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/foreigns/edit.jsp");
-    rd.forward(request,response);
+        //洋画のIDをセッションスコープに登録
+        request.getSession().setAttribute("foreign_id", f.getId());
+
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/foreigns/edit.jsp");
+        rd.forward(request, response);
     }
 
 }
